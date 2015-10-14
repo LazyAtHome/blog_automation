@@ -24,7 +24,7 @@ class Test_Open(unittest.TestCase):
     def setUp(self):
         self.dr = webdriver.Firefox()
         self.url  = "http://www.caakaa.com"
-#登录
+#登录测试
     def test_main(self):
         dr = self.dr
         dr.get(self.url )
