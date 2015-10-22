@@ -18,7 +18,8 @@ def test_delete(self):
         flag = 1
     except:
         flag = 0
-    self.assertEqual(flag,1,"new's delete------failed")
+    #self.verifyEquals(flag,0,"new's delete------failed")
+    self.assertEquals(flag,0,"new's delete------failed")
     """
     try:
         dr.find_element_by_xpath("//a[@href='/admin/blog/48']")
