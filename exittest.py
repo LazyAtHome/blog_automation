@@ -12,6 +12,7 @@ def test_exit(self):
     time.sleep(1)
     errorstr3 = dr.find_element_by_id("flash-notice").text
     if errorstr3 == u"成功退出":
-        print u"退出登录............passed"
+        flag = 1
     else:
-        print u"退出登录.............failed"
+        flag = 0
+    self.assertEqual(flag,1,"Exit------failed")

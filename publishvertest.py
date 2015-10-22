@@ -14,19 +14,35 @@ def testpublishver(self):
     dr.find_element_by_id("blog_title").send_keys(u"")
     dr.find_element_by_css_selector("input.submit").click()
     errorstr1 = dr.find_element_by_xpath("//div[@id='form-error-info']/span").text
+    if errorstr1 ==u"文章标题太短了;":
+        flag = 1
+    else:
+        flag = 0
+    self.assertEqual(flag,1,"new's title is null------failed")
+    
+    """
     if errorstr1 == u"文章标题太短了;":
         print u"标题为空验证............passed"
     else:
         print u"标题为空验证............failed"
+    """
     #标题字符长度验证
     dr.find_element_by_id("blog_title").clear()
     dr.find_element_by_id("blog_title").send_keys(u"1")
     dr.find_element_by_css_selector("input.submit").click()
     errorstr1 = dr.find_element_by_xpath("//div[@id='form-error-info']/span").text
     if errorstr1 == u"文章标题太短了;":
+        flag = 1
+    else:
+        flag = 0
+    self.assertEqual(flag,1,"new's title is too short------failed")
+        
+    """
+    if errorstr1 == u"文章标题太短了;":
         print u"标题字符长度验证............passed"
     else:
         print u"标题字符长度验证............failed"
+    """
     #文章内容必填验证
     dr.find_element_by_id("blog_title").clear()
     dr.find_element_by_id("blog_title").send_keys(u"文章标题")
@@ -36,19 +52,32 @@ def testpublishver(self):
    # errorstr2 = dr.find_element_by_xpath("//div[@id='form-error-info']/span[2]").text
     errorstr1 = dr.find_element_by_xpath("//div[@id='form-error-info']/span").text
     if errorstr1 == u"文章内容太少了;":
+        flag = 1
+    else:
+        flag = 0
+    self.assertEqual(flag,1,"new's content is null------failed")
+    """if errorstr1 == u"文章内容太少了;":
         print u"文章内容必填验证............passed"
     else:
         print u"文章内容必填验证............failed"
+    """
     dr.find_element_by_id("blog_title").clear()
     dr.find_element_by_id("blog_title").send_keys(u"文章标题")
     dr.find_element_by_id("blog_content").clear()
     dr.find_element_by_id("blog_content").send_keys(u"w")  
     dr.find_element_by_css_selector("input.submit").click()
     errorstr1 = dr.find_element_by_xpath("//div[@id='form-error-info']/span").text
+    if errorstr1 == u"文章内容太少了;":
+        flag = 1
+    else:
+        flag = 0
+    self.assertEqual(flag,1,u"new's content is too short------failed")
+    """
     if errorstr1  == u"文章内容太少了;":
         print u"文章内容字符长度验证............passed"
     else:
         print u"文章内容字符长度必填验证............failed"
+    """
     dr.find_element_by_id("blog_title").clear()
     dr.find_element_by_id("blog_title").send_keys(u"Linux的用户和用户组管理")
     dr.find_element_by_id("blog_content").clear()
@@ -60,18 +89,34 @@ def testpublishver(self):
     dr.find_element_by_css_selector("input.submit").click()
     time.sleep(2)
     errorstr2 = dr.find_element_by_id("flash-notice").text
+    if dr.find_element_by_id("flash-notice").text == u"文章成功发布":
+        flag = 1
+    else:
+        flag = 0
+    self.assertEqual(flag,1,"publish new's -----failed")
    # errorstr2 = dr.find_element_by_xpath("//div[@id=''flash-notice]").text
+    """
     if errorstr2 == u"文章成功发布":
         print u"文章发表操作............passed"
     else:
         print u"文章发表操作............failed"
+    """
+    """
     #标题重复性验证
     #浏览
     dr.find_element_by_link_text(u"首页").click()
     dr.find_element_by_link_text(u"博客").click()
     dr.find_element_by_link_text(u"Linux的用户和用户组管理-删除测试数据").click()
     time.sleep(2)
-
+    try:
+        dr.find_element_by_link_text(u"Linux的用户和用户组管理-删除测试数据")
+        flag = 1
+    except:
+        flag = 0
+    self.assertEqual(flag,1,u"new's delete------failed")
+        
+    """
+    """
     #dr.find_element_by_link_text(u"首页").click()
     try:
         dr.find_element_by_link_text(u"Linux的用户和用户组管理-删除测试数据")
@@ -82,5 +127,6 @@ def testpublishver(self):
         print u"浏览............passed"
     else:
         print u"浏览............failed"
+    """
     dr.find_element_by_link_text(u"首页").click()
     time.sleep(2)

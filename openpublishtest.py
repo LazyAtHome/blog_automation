@@ -9,6 +9,13 @@ def test_openpublish(self):
     #发表文章页面打开验证
     dr.find_element_by_link_text(u"写文章").click()
     try:
+        dr.find_element_by_css_selector("inputsumit")
+        flag = 1
+    except:
+        flag = 0
+    self.assertEqual(flag,0,"open new's publish------failed")
+    """
+    try:
         dr.find_element_by_css_selector("input.submit")
         flag = True
     except:
@@ -17,3 +24,4 @@ def test_openpublish(self):
         print u"进入发表文章页面...........passed"
     else:
         print u"进入发表文章页面............failed"
+    """

@@ -15,6 +15,14 @@ def test_loginver(self):
     dr.find_element_by_id('account_password').submit()
     try:
         dr.find_element_by_link_text(u"写文章")
+        flag = 1
+    except:
+        flag = 0
+    self.assertEqual(flag,0,"check_username_is_null------failed")
+
+    """
+    try:
+        dr.find_element_by_link_text(u"写文章")
         flag = True
     except:
         flag = False
@@ -22,11 +30,19 @@ def test_loginver(self):
         print u"用户名为空验证...........passed"
     else:
         print u"用户名为空验证............failed"
+    """
     #用户名有误判断
     dr.find_element_by_id("account_email").clear()
     dr.find_element_by_id("account_email").send_keys("testaccount@gmail.com")
     dr.find_element_by_id("account_password").clear()
     dr.find_element_by_id('account_password').submit()
+    try:
+        dr.find_element_by_link_text(u"写文章")
+        flag = 1
+    except:
+        flag = 0
+    self.assertEqual(flag, 0,"check_username_is_wrong------failed")
+    """
     try:
         dr.find_element_by_link_text(u"写文章")
         flag = True
@@ -36,12 +52,20 @@ def test_loginver(self):
         print u"用户名不匹配验证............passed"
     else:
         print u"用户名不匹配验证............failed"
+    """
         #密码为空判断
     dr.find_element_by_id("account_email").clear()
     dr.find_element_by_id("account_email").send_keys("wulliam@gmail.com")
     dr.find_element_by_id("account_password").clear()
     dr.find_element_by_id("account_password").send_keys("")
     dr.find_element_by_id('account_password').submit()
+    try:
+        dr.find_element_by_link_text(u"写文章")
+        flag = 1
+    except:
+        falg = 0
+    self.assertEqual(flag,0,"check_pwd_is_null------failed")
+    """
     try:
         dr.find_element_by_link_text(u"写文章")
         flag = True
@@ -51,12 +75,20 @@ def test_loginver(self):
         print u"密码为空验证............passed"
     else:
         print u"密码为空验证............failed"
+    """
         #密码有误判断
     dr.find_element_by_id("account_email").clear()
     dr.find_element_by_id("account_email").send_keys("wulliam@gmail.com")
     dr.find_element_by_id("account_password").clear()
     dr.find_element_by_id("account_password").send_keys("Db123456")
     dr.find_element_by_id('account_password').submit()
+    try:
+        dr.find_element_by_link_text(u"写文章")
+        flag = 1
+    except:
+        falg = 0
+    self.assertEqual(flag,0,"check_pwd_is_wrong-------failed")
+    """
     try:
         dr.find_element_by_link_text(u"写文章")
         flag = True
@@ -66,12 +98,20 @@ def test_loginver(self):
         print u"密码不匹配验证............passed"
     else:
         print u"密码不匹配验证............failed"
+    """
         #正常登录
     dr.find_element_by_id("account_email").clear()
     dr.find_element_by_id("account_email").send_keys("wulliam@gmail.com")
     dr.find_element_by_id("account_password").clear()
     dr.find_element_by_id("account_password").send_keys("P@ssw0rd15")
     dr.find_element_by_id('account_password').submit()
+    try:
+        dr.find_element_by_link_text(u"写文章")
+        flag = 1
+    except:
+        flag = 0
+    self.assertEqual(flag,1,"normal login------failed")
+    """
     try:
         dr.find_element_by_link_text(u"写文章")
         flag = True
@@ -81,4 +121,4 @@ def test_loginver(self):
         print u"正常登录操作............passed"
     else:
         print u"正常登录操作............failed"
-      
+    """

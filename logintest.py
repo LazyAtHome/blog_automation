@@ -10,11 +10,22 @@ def test_login(self):
     dr.find_element_by_link_text(u"登录").click() 
     try:
         dr.find_element_by_id("account_email")
+        flag = 1
+    except:
+        flag = 0
+    self.assertEqual(flag,1,u"打开登录------failed")
+    
+    """
+    try:
+        dr.find_element_by_id("account_email")
         flag = True
     except:
         flag = False
     if flag == True:
+        
         print u"打开登录............passed"
     else:
         print u"打开登录............failed"
+from _multiprocessing import flags
+    """
             
