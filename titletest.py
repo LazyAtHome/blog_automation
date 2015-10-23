@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-  
 def test_title(self):
     dr = self.dr
-    print u"开始测试...........pass"
+    print u"open the website...........pass"
     flagstr = dr.title
     assert"wulliam site" in dr.title
     """
     if flagstr == "wulliam site":
-        print u"网站打开............passed"
+        print u"open the website............passed"
     else:
-        print u"网站打开............failed"
+        print u"open the website............failed"
     """
